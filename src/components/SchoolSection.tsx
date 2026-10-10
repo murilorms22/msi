@@ -33,16 +33,24 @@ const SCHOOL_CARDS = [
 
 export function SchoolSection() {
   return (
-    <section id="escolas" className="border-t border-slate-200/80 bg-slate-50/60 py-16 sm:py-20 lg:py-28">
-      <div className="container-page">
+    <section
+      id="escolas"
+      className="relative overflow-hidden bg-gradient-to-br from-brand-600 via-brand-500 to-navy-950 py-16 text-white sm:py-20 lg:py-28"
+    >
+      {/* Elementos visuais de fundo idênticos à seção de Suporte Remoto */}
+      <div className="bg-grid pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_90%)]" />
+      <div className="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-brand-400/30 blur-3xl" />
+      <div className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-brand-500/20 blur-3xl" />
+
+      <div className="container-page relative">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-600">
+          <span className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-400">
             PARA INSTITUIÇÕES DE ENSINO
           </span>
-          <h2 className="mt-3 text-2xl font-bold text-navy-950 min-[400px]:text-3xl sm:text-4xl">
+          <h2 className="mt-3 text-2xl font-bold text-white min-[400px]:text-3xl sm:text-4xl">
             Estrutura de TI e Suprimentos que sua Escola precisa
           </h2>
-          <p className="mt-4 text-base text-slate-600 sm:text-lg">
+          <p className="mt-4 text-base text-blue-100 sm:text-lg">
             Cuidamos da tecnologia para que a equipe pedagógica foque no ensino. Atendimento rápido e fornecimento contínuo.
           </p>
         </div>
@@ -53,13 +61,13 @@ export function SchoolSection() {
             return (
               <div
                 key={card.title}
-                className="flex flex-col rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-500/40 hover:shadow-lg"
+                className="flex flex-col rounded-2xl border border-white/15 bg-navy-950/60 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-brand-400/50 hover:bg-navy-950/75"
               >
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600 shadow-2xs">
+                <span className="grid h-12 w-12 place-items-center rounded-xl border border-white/10 bg-brand-500/20 text-brand-400 shadow-2xs">
                   <Icon className="h-6 w-6" />
                 </span>
-                <h3 className="mt-5 text-lg font-semibold text-navy-950">{card.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{card.description}</p>
+                <h3 className="mt-5 text-lg font-semibold text-white">{card.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-200">{card.description}</p>
               </div>
             )
           })}
@@ -71,7 +79,7 @@ export function SchoolSection() {
             target="_blank"
             rel="noopener noreferrer"
             id="school-cta-whatsapp"
-            className="btn-primary inline-flex px-7 py-4 text-base"
+            className="btn-primary border border-white inline-flex w-full px-8 py-4 text-base sm:w-auto"
           >
             <WhatsAppIcon className="h-5 w-5 shrink-0" />
             Solicitar proposta / visita técnica para minha escola
