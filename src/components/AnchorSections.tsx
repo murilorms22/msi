@@ -145,13 +145,15 @@ export function AnchorSections() {
             subtitle="Sem deslocamento e sem espera: atendimento seguro direto na sua tela."
           />
           <div className="mt-12 grid items-center gap-8 lg:mt-14 lg:grid-cols-2 lg:gap-10">
-            <ImageSlot
-              src={IMAGES.remoteSupport}
-              alt="Conexão de suporte remoto via AnyDesk"
-              label="suporte-anydesk.jpg"
-              icon={<Monitor className="h-7 w-7" />}
-              className="aspect-[4/3] w-full rounded-3xl border border-white/20 object-cover shadow-2xl shadow-navy-950/40"
-            />
+            <div className="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-3xl border border-white/20 bg-white shadow-2xl shadow-navy-950/40">
+              <ImageSlot
+                src={IMAGES.remoteSupport}
+                alt="Conexão de suporte remoto via AnyDesk"
+                label="suporte-anydesk.jpg"
+                icon={<Monitor className="h-7 w-7 text-navy-900" />}
+                className="h-full w-full object-contain"
+              />
+            </div>
             <ol className="grid gap-4">
               {REMOTE_SUPPORT_STEPS.map((step, i) => (
                 <li key={step.title} className="flex gap-4 rounded-2xl border border-white/15 bg-navy-950/60 p-5 backdrop-blur sm:gap-5 sm:p-6">
