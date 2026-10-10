@@ -4,14 +4,16 @@
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-display: 'Space Grotesk', 'Inter', ui-sans-serif, sans-serif;
 
-  --color-navy-950: #060d1f;
-  --color-navy-900: #0b1530;
-  --color-navy-800: #12204a;
-  --color-navy-700: #1b2d63;
+  /* Bases escuras derivadas do azul primário */
+  --color-navy-950: #020a1c;
+  --color-navy-900: #041433;
+  --color-navy-800: #0a2152;
+  --color-navy-700: #123176;
 
-  --color-brand-400: #22d3ee;
-  --color-brand-500: #06b6d4;
-  --color-brand-600: #0284c7;
+  /* Primária: rgba(0, 129, 254) | Secundária: rgba(0, 251, 254) */
+  --color-brand-400: rgb(0 251 254);
+  --color-brand-500: rgb(0 129 254);
+  --color-brand-600: rgb(0 98 209);
 
   --color-whatsapp: #25d366;
   --color-whatsapp-dark: #1ebe5b;
@@ -39,15 +41,17 @@
     scroll-behavior: smooth;
     scroll-padding-top: 5.5rem;
     -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
   }
   body {
-    @apply bg-slate-50 font-sans text-navy-900;
+    @apply bg-navy-950 font-sans text-white;
+    overflow-x: clip;
   }
   h1, h2, h3 {
     @apply font-display tracking-tight;
   }
   ::selection {
-    @apply bg-brand-500/25;
+    @apply bg-brand-400/30;
   }
 }
 
@@ -56,25 +60,33 @@
 }
 
 @utility text-gradient {
-  @apply bg-gradient-to-r from-brand-500 to-brand-600 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-brand-400 to-brand-500 bg-clip-text text-transparent;
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2;
+  @apply inline-flex items-center justify-center gap-2 rounded-xl text-center font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-950;
 }
 
 @utility btn-primary {
-  @apply btn bg-gradient-to-r from-brand-500 to-brand-600 text-white shadow-lg shadow-brand-500/30 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-500/40;
+  @apply btn bg-gradient-to-r from-brand-600 to-brand-500 text-white shadow-lg shadow-brand-500/40 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-400/40;
 }
 
 @utility btn-outline {
-  @apply btn border border-navy-900/15 bg-white/70 text-navy-900 backdrop-blur hover:-translate-y-0.5 hover:border-brand-500 hover:text-brand-600;
+  @apply btn border border-white/30 bg-white/5 text-white backdrop-blur hover:-translate-y-0.5 hover:border-brand-400 hover:text-brand-400;
+}
+
+@utility btn-dark {
+  @apply btn border border-white/20 bg-navy-950 text-white shadow-lg shadow-navy-950/40 hover:-translate-y-0.5 hover:border-brand-400;
+}
+
+@utility glass {
+  @apply border border-white/10 bg-white/5 backdrop-blur-md;
 }
 
 @utility bg-grid {
   background-image:
-    linear-gradient(to right, rgb(11 21 48 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(11 21 48 / 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgb(255 255 255 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.06) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 

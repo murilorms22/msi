@@ -30,22 +30,22 @@ export function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled || open
-          ? 'border-b border-navy-900/5 bg-white/85 shadow-sm shadow-navy-900/5 backdrop-blur-xl'
+          ? 'border-b border-white/10 bg-navy-950/85 shadow-lg shadow-black/20 backdrop-blur-xl'
           : 'bg-transparent'
       }`}
     >
-      <nav className="container-page flex h-18 items-center justify-between" aria-label="Navegação principal">
+      <nav className="container-page flex h-18 items-center justify-between gap-3" aria-label="Navegação principal">
         {/* Logo */}
-        <a href="#inicio" id="nav-logo" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="relative grid h-11 w-11 place-items-center rounded-xl bg-navy-900 shadow-lg shadow-navy-900/20 transition-transform duration-300 group-hover:scale-105">
+        <a href="#inicio" id="nav-logo" className="group flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
+          <span className="relative grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-white/15 bg-navy-900 shadow-lg shadow-brand-500/20 transition-transform duration-300 group-hover:scale-105">
             <span className="font-display text-sm font-bold tracking-wider text-gradient">MSI</span>
-            <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-brand-500 ring-2 ring-white" />
+            <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-brand-400 ring-2 ring-navy-950" />
           </span>
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-xl font-bold tracking-tight text-navy-900">
-              MSI<span className="text-brand-500">.</span>
+          <span className="flex min-w-0 flex-col leading-none">
+            <span className="font-display text-xl font-bold tracking-tight text-white">
+              MSI<span className="text-brand-400">.</span>
             </span>
-            <span className="mt-1 text-[11px] font-medium uppercase tracking-[0.14em] text-slate-500">
+            <span className="mt-1 truncate text-[10px] font-medium uppercase tracking-[0.12em] text-white sm:text-[11px] sm:tracking-[0.14em]">
               {COMPANY.tagline}
             </span>
           </span>
@@ -58,7 +58,7 @@ export function Navbar() {
               <a
                 href={link.href}
                 id={`nav-link-${link.href.slice(1)}`}
-                className="relative rounded-lg px-4 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-navy-900 after:absolute after:inset-x-4 after:bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-brand-500 after:transition-transform after:duration-300 hover:after:scale-x-100"
+                className="relative rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors hover:text-brand-400 after:absolute after:inset-x-4 after:bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-brand-400 after:transition-transform after:duration-300 hover:after:scale-x-100"
               >
                 {link.label}
               </a>
@@ -66,7 +66,7 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <a
             href={WHATSAPP_LINKS.default}
             target="_blank"
@@ -81,7 +81,7 @@ export function Navbar() {
           <button
             type="button"
             id="nav-menu-toggle"
-            className="grid h-11 w-11 place-items-center rounded-xl text-navy-900 transition-colors hover:bg-navy-900/5 lg:hidden"
+            className="grid h-11 w-11 place-items-center rounded-xl text-white transition-colors hover:bg-white/10 lg:hidden"
             aria-label={open ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -107,7 +107,7 @@ export function Navbar() {
                   href={link.href}
                   id={`mobile-link-${link.href.slice(1)}`}
                   onClick={() => setOpen(false)}
-                  className="block rounded-xl px-4 py-3 text-base font-medium text-navy-900 transition-colors hover:bg-brand-500/10 hover:text-brand-600"
+                  className="block rounded-xl px-4 py-3 text-base font-medium text-white transition-colors hover:bg-white/10 hover:text-brand-400"
                 >
                   {link.label}
                 </a>

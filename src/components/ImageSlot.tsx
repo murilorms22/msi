@@ -47,11 +47,11 @@ export function ImageSlot({
         className={`relative grid place-items-center overflow-hidden bg-gradient-to-br from-navy-800 via-navy-900 to-navy-950 ${className}`}
       >
         <div className="bg-grid absolute inset-0 opacity-30" />
-        <div className="relative flex flex-col items-center gap-3 px-6 text-center text-slate-300">
+        <div className="relative flex flex-col items-center gap-3 px-6 text-center text-white">
           <span className="grid h-14 w-14 place-items-center rounded-2xl border border-brand-500/30 bg-brand-500/10 text-brand-400">
             {icon ?? <ImageIcon className="h-7 w-7" />}
           </span>
-          <span className="font-mono text-xs text-slate-400">{label ?? src.split('/').pop()}</span>
+          <span className="font-mono text-xs text-white">{label ?? src.split('/').pop()}</span>
         </div>
       </div>
     )
