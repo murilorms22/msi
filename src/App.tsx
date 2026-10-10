@@ -6,7 +6,7 @@ import { Navbar } from './components/Navbar'
 
 export default function App() {
   return (
-    <div className="relative isolate overflow-x-clip bg-navy-950">
+    <div className="relative isolate overflow-x-clip bg-white text-navy-950">
       <BackgroundDecor />
       <Navbar />
       <main className="relative z-10">
