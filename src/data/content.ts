@@ -4,21 +4,47 @@
  */
 
 export const WHATSAPP_NUMBER = '5553999777050'
-export const WHATSAPP_DEFAULT_MESSAGE =
-  'Olá, Vitor! Vim pelo site da MSI e gostaria de um orçamento'
+
+/** Mensagens pré-definidas por contexto/seção (segmentação para maior conversão). */
+export const WHATSAPP_MESSAGES = {
+  default: 'Olá, Vitor! Vim pelo site da MSI e gostaria de um orçamento.',
+  remoteSupport: 'Olá, Vitor! Preciso de suporte remoto urgente no meu computador.',
+  hardware: 'Olá, Vitor! Gostaria de um diagnóstico para meu notebook/computador.',
+  security: 'Olá, Vitor! Gostaria de um orçamento para câmeras/CFTV e redes.',
+  sales: 'Olá, Vitor! Gostaria de consultar equipamentos/toners disponíveis.',
+} as const
+
+export type WhatsAppTopic = keyof typeof WHATSAPP_MESSAGES
 
 /** Gera um link wa.me com mensagem pré-definida (codificada com segurança). */
-export const buildWhatsAppLink = (message: string = WHATSAPP_DEFAULT_MESSAGE): string =>
+export const buildWhatsAppLink = (message: string = WHATSAPP_MESSAGES.default): string =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
 
-export const WHATSAPP_LINKS = {
-  default: buildWhatsAppLink(),
-  remoteSupport: buildWhatsAppLink(
-    'Olá, Vitor! Vim pelo site da MSI e preciso de suporte remoto via AnyDesk',
-  ),
-  security: buildWhatsAppLink(
-    'Olá, Vitor! Vim pelo site da MSI e gostaria de um orçamento de câmeras / CFTV',
-  ),
+/** Link do WhatsApp para um tópico específico. */
+export const getWhatsAppLink = (topic: WhatsAppTopic = 'default'): string =>
+  buildWhatsAppLink(WHATSAPP_MESSAGES[topic])
+
+export const WHATSAPP_LINKS: Record<WhatsAppTopic, string> = {
+  default: getWhatsAppLink('default'),
+  remoteSupport: getWhatsAppLink('remoteSupport'),
+  hardware: getWhatsAppLink('hardware'),
+  security: getWhatsAppLink('security'),
+  sales: getWhatsAppLink('sales'),
+}
+
+/** Site oficial do AnyDesk (download do instalador). */
+export const ANYDESK_URL = 'https://anydesk.com'
+
+/**
+ * Slots de imagem. Para trocar, basta salvar o arquivo com o mesmo nome em
+ * public/images/vitor/ — enquanto não existir, um placeholder limpo é exibido.
+ */
+export const IMAGE_DIR = '/images/vitor'
+export const IMAGES = {
+  workbench: `${IMAGE_DIR}/bancada-pc.jpg`,
+  remoteSupport: `${IMAGE_DIR}/suporte-anydesk.jpg`,
+  cctv: `${IMAGE_DIR}/instalacao-cftv.jpg`,
+  profile: `${IMAGE_DIR}/vitor-perfil.jpg`,
 } as const
 
 export const COMPANY = {
@@ -67,6 +93,9 @@ export interface Service {
   title: string
   description: string
   bullets: string[]
+  /** Tópico da mensagem de WhatsApp usada no botão do card. */
+  topic: WhatsAppTopic
+  cta: string
 }
 
 export const SERVICES: Service[] = [
@@ -74,8 +103,15 @@ export const SERVICES: Service[] = [
     id: 'manutencao-notebooks',
     icon: 'laptop',
     title: 'Conserto de Notebooks',
-    description: 'Reparo de placa, tela, teclado, carcaça e conector de carga com peças de qualidade.',
-    bullets: ['Troca de tela e teclado', 'Reparo de dobradiças', 'Limpeza e pasta térmica'],
+    description: 'Reparo de placa, tela, teclado e conector de carga com peças de qualidade.',
+    bullets: [
+      'Recuperação de carcaças quebradas e dobradiças',
+      'Análise avançada de placa-mãe',
+      'Troca de tela e teclado',
+      'Limpeza e pasta térmica',
+    ],
+    topic: 'hardware',
+    cta: 'Pedir Diagnóstico',
   },
   {
     id: 'upgrade-computadores',
@@ -83,6 +119,8 @@ export const SERVICES: Service[] = [
     title: 'Upgrade e Montagem de PCs',
     description: 'Mais desempenho com SSD, memória RAM e montagem de computadores sob medida.',
     bullets: ['Instalação de SSD/NVMe', 'Upgrade de memória', 'PCs gamer e de escritório'],
+    topic: 'hardware',
+    cta: 'Pedir Diagnóstico',
   },
   {
     id: 'suporte-remoto',
@@ -90,13 +128,17 @@ export const SERVICES: Service[] = [
     title: 'Suporte Remoto (AnyDesk)',
     description: 'Resolução de problemas de software à distância, com segurança e agilidade.',
     bullets: ['Formatação e otimização', 'Remoção de vírus', 'Instalação de programas'],
+    topic: 'remoteSupport',
+    cta: 'Suporte Remoto Agora',
   },
   {
     id: 'cftv',
     icon: 'camera',
     title: 'Câmeras e CFTV',
-    description: 'Projeto e instalação de câmeras para residências, comércios e condomínios.',
-    bullets: ['Acesso pelo celular', 'Gravação em DVR/NVR', 'CFTV predial'],
+    description: 'Projeto e instalação de câmeras de segurança sob medida para cada ambiente.',
+    bullets: ['Projetos para escolas, condomínios e comércios', 'Acesso pelo celular', 'Gravação em DVR/NVR'],
+    topic: 'security',
+    cta: 'Orçar Câmeras',
   },
   {
     id: 'redes',
@@ -104,6 +146,8 @@ export const SERVICES: Service[] = [
     title: 'Redes e Wi-Fi',
     description: 'Cabeamento estruturado e Wi-Fi estável para casa e empresa.',
     bullets: ['Cabeamento e racks', 'Roteadores e repetidores', 'Cobertura sem pontos cegos'],
+    topic: 'security',
+    cta: 'Orçar Rede',
   },
   {
     id: 'seguranca-dados',
@@ -111,6 +155,8 @@ export const SERVICES: Service[] = [
     title: 'Backup e Segurança Digital',
     description: 'Proteção dos seus dados com rotinas de backup e boas práticas de segurança.',
     bullets: ['Backup em nuvem e local', 'Recuperação de arquivos', 'Antivírus profissional'],
+    topic: 'default',
+    cta: 'Pedir Orçamento',
   },
 ]
 
@@ -121,11 +167,26 @@ export const REMOTE_SUPPORT_STEPS = [
 ] as const
 
 export const SECURITY_FEATURES = [
+  'Projetos para escolas, condomínios e comércios',
   'Câmeras Full HD com visão noturna',
   'Monitoramento em tempo real pelo celular',
   'Instalação limpa e organizada',
-  'Projetos para casas, lojas e condomínios',
 ] as const
+
+export const SALES = {
+  eyebrow: 'Vendas e Suprimentos',
+  title: 'Equipamentos e suprimentos para casa e escritório',
+  description:
+    'Computadores sob medida, PCs Gamer, impressoras, toners e suprimentos de escritório — consulte disponibilidade e preços direto com o técnico.',
+  items: [
+    'Computadores sob medida',
+    'PCs Gamer',
+    'Impressoras',
+    'Toners',
+    'Suprimentos de escritório',
+  ],
+  cta: 'Consultar Disponibilidade',
+} as const
 
 export const ABOUT = {
   title: 'Atendimento direto com o técnico',

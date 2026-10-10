@@ -1,6 +1,7 @@
 import { ArrowRight, CheckCircle2, Cpu, Headset, MonitorSmartphone, ShieldCheck } from 'lucide-react'
 import heroImage from '../assets/hero-workbench.jpg'
-import { COMPANY, HERO, WHATSAPP_LINKS } from '../data/content'
+import { COMPANY, HERO, IMAGES, WHATSAPP_LINKS } from '../data/content'
+import { ImageSlot } from './ImageSlot'
 import { WhatsAppIcon } from './icons/WhatsAppIcon'
 
 export function HeroSection() {
@@ -83,13 +84,14 @@ export function HeroSection() {
             </div>
 
             <div className="relative overflow-hidden rounded-2xl">
-              <img
-                src={heroImage}
+              <ImageSlot
+                src={IMAGES.workbench}
+                fallbackSrc={heroImage}
                 alt="Bancada técnica da MSI com notebook aberto, memórias RAM e SSD durante manutenção"
                 className="aspect-[4/3] w-full object-cover"
                 width={1200}
                 height={900}
-                fetchPriority="high"
+                priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/10 to-transparent" />
 
