@@ -67,10 +67,11 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Serviços', href: '#servicos' },
   { label: 'Suporte Remoto', href: '#suporte-remoto' },
   { label: 'Segurança', href: '#seguranca' },
+  { label: 'Escolas', href: '#escolas' },
   { label: 'Sobre', href: '#sobre' },
 ]
 
-export type TrustItemIcon = 'wrench' | 'headphones' | 'shield'
+export type TrustItemIcon = 'wrench' | 'headphones' | 'shield' | 'school'
 
 export interface TrustItem {
   icon: TrustItemIcon
@@ -78,7 +79,7 @@ export interface TrustItem {
 }
 
 export const HERO = {
-  badge: 'Atendimento de confiança em Pelotas e Suporte Remoto',
+  badge: 'Manutenção Especializada, Suporte Remoto e Infraestrutura para Escolas e Empresas',
   title: 'Tecnologia, Manutenção e Segurança Completa para Seus Equipamentos e Sua Empresa.',
   highlight: 'Segurança Completa',
   subtitle:
@@ -89,6 +90,7 @@ export const HERO = {
     { icon: 'wrench', label: 'Diagnóstico Preciso' },
     { icon: 'headphones', label: 'Atendimento Remoto sem Sair de Casa' },
     { icon: 'shield', label: 'Câmeras e Monitoramento' },
+    { icon: 'school', label: 'Parceiro Tecnológico para Escolas da Região' },
   ] as TrustItem[],
 } as const
 

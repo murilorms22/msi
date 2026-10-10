@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, Cpu, Headphones, Headset, MonitorSmartphone, ShieldCheck, Wrench } from 'lucide-react'
+import { ArrowRight, CheckCircle2, Cpu, GraduationCap, Headphones, Headset, MonitorSmartphone, ShieldCheck, Wrench } from 'lucide-react'
 import heroImage from '../assets/hero-workbench.jpg'
 import { COMPANY, HERO, IMAGES, WHATSAPP_LINKS, type TrustItemIcon } from '../data/content'
 import { ImageSlot } from './ImageSlot'
@@ -8,6 +8,7 @@ const TRUST_ICONS: Record<TrustItemIcon, typeof Wrench> = {
   wrench: Wrench,
   headphones: Headphones,
   shield: ShieldCheck,
+  school: GraduationCap,
 }
 
 export function HeroSection() {
@@ -122,7 +123,7 @@ export function HeroSection() {
             </span>
           </div>
 
-          <div className="absolute -right-2 -top-4 hidden animate-float items-center gap-2.5 rounded-xl border border-navy-700 bg-navy-900/95 p-2.5 pr-4 shadow-xl shadow-black/25 backdrop-blur [animation-delay:1.5s] sm:flex lg:-right-4">
+          <div className="absolute -right-2 top-28 hidden animate-float items-center gap-2.5 rounded-xl border border-navy-700 bg-navy-900/95 p-2.5 pr-4 shadow-xl shadow-black/25 backdrop-blur [animation-delay:1.5s] sm:flex lg:-right-4">
             <span className="grid h-9 w-9 place-items-center rounded-lg bg-emerald-500/20 text-emerald-400">
               <ShieldCheck className="h-4.5 w-4.5" />
             </span>

@@ -12,6 +12,7 @@ import {
   type ServiceIcon,
 } from '../data/content'
 import { ImageSlot } from './ImageSlot'
+import { SchoolSection } from './SchoolSection'
 import { WhatsAppIcon } from './icons/WhatsAppIcon'
 
 const ICONS: Record<ServiceIcon, LucideIcon> = {
@@ -214,7 +215,10 @@ export function AnchorSections() {
         </div>
       </section>
 
-      {/* 4. SEÇÃO SOBRE - Fundo suave / clean */}
+      {/* 4. SEÇÃO DE ESCOLAS & INSTITUIÇÕES DE ENSINO */}
+      <SchoolSection />
+
+      {/* 5. SEÇÃO SOBRE - Fundo suave / clean */}
       <section id="sobre" className="border-t border-slate-200/80 bg-slate-50/70 py-16 sm:py-20 lg:py-28">
         <div className="container-page grid items-center gap-10 lg:grid-cols-[auto_1fr] lg:gap-12">
           <ImageSlot
