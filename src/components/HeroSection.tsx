@@ -26,14 +26,14 @@ export function HeroSection() {
         <div className="animate-fade-up min-w-0">
           <span
             id="hero-badge"
-            className="inline-flex items-center rounded-full border border-brand-500/25 bg-brand-50/70 px-4 py-1.5 text-xs font-semibold text-brand-700 shadow-xs backdrop-blur sm:text-sm"
+            className="inline-flex items-center border-l-2 border-brand-500 pl-3 text-xs font-semibold tracking-wide text-brand-600 sm:text-sm"
           >
             {HERO.badge}
           </span>
 
-          <h1 className="mt-5 text-[1.95rem] font-bold leading-[1.14] text-navy-950 min-[400px]:text-4xl sm:text-5xl lg:text-[3.25rem] lg:leading-[1.1]">
+          <h1 className="mt-5 text-[1.95rem] font-medium leading-[1.14] text-navy-950 min-[400px]:text-4xl sm:text-5xl lg:text-[3.25rem] lg:leading-[1.1]">
             {before}
-            <span className="text-gradient">{HERO.highlight}</span>
+            <span className="text-gradient font-bold">{HERO.highlight}</span>
             {after}
           </h1>
 
@@ -135,7 +135,7 @@ export function HeroSection() {
       </div>
 
       {/* Faixa Centralizada de Diferenciais: lado a lado, ícones maiores, sem emojis, separados por pipe */}
-      <div className="container-page mt-12 sm:mt-16 pt-8 border-t border-slate-200/80">
+      <div className="container-page mt-12 sm:mt-16 pt-8">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-10 text-center">
           {HERO.trustItems.map((item, idx) => {
             const Icon = TRUST_ICONS[item.icon]

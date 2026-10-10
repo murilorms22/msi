@@ -164,7 +164,7 @@ export function AnchorSections() {
             </ol>
           </div>
           <div className="mt-10 text-center sm:mt-12">
-            <a href={WHATSAPP_LINKS.remoteSupport} target="_blank" rel="noopener noreferrer" id="remote-cta-whatsapp" className="btn-dark w-full px-7 py-4 sm:w-auto">
+            <a href={WHATSAPP_LINKS.remoteSupport} target="_blank" rel="noopener noreferrer" id="remote-cta-whatsapp" className="btn-primary border border-white w-full px-10 py-4 sm:w-auto">
               <WhatsAppIcon className="h-5 w-5 shrink-0" /> Iniciar Suporte Remoto
             </a>
             <p className="mt-5 text-sm text-blue-100">
