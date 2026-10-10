@@ -65,6 +65,7 @@ export function ImageSlot({
       width={width}
       height={height}
       loading={priority ? 'eager' : 'lazy'}
+      decoding="async"
       fetchPriority={priority ? 'high' : 'auto'}
       onError={handleError}
     />

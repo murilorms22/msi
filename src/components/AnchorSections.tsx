@@ -147,7 +147,7 @@ export function AnchorSections() {
           <div className="mt-12 grid items-center gap-8 lg:mt-14 lg:grid-cols-2 lg:gap-10">
             <ImageSlot
               src={IMAGES.remoteSupport}
-              alt="Atendimento de suporte remoto via AnyDesk"
+              alt="Conexão de suporte remoto via AnyDesk"
               label="suporte-anydesk.jpg"
               icon={<Monitor className="h-7 w-7" />}
               className="aspect-[4/3] w-full rounded-3xl border border-white/20 object-cover shadow-2xl shadow-navy-950/40"
