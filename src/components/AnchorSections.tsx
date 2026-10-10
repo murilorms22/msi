@@ -183,13 +183,13 @@ export function AnchorSections() {
         </div>
       </section>
 
-      {/* 3. SEÇÃO DE SEGURANÇA E CFTV - Fundo branco limpo */}
+      {/* 3. SEÇÃO DE CÂMERAS E MONITORAMENTO - Fundo branco limpo */}
       <section id="seguranca" className="bg-white py-16 sm:py-20 lg:py-28">
         <div className="container-page grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
           <div>
-            <span className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-600">Segurança</span>
-            <h2 className="mt-3 text-2xl font-bold text-navy-950 min-[400px]:text-3xl sm:text-4xl">Câmeras, CFTV e redes para proteger o que importa</h2>
-            <p className="mt-4 text-base text-slate-600 sm:text-lg">Projetos sob medida para escolas, condomínios e comércios em {COMPANY.region}.</p>
+            <span className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-600">Segurança & Monitoramento</span>
+            <h2 className="mt-3 text-2xl font-bold text-navy-950 min-[400px]:text-3xl sm:text-4xl">Câmeras, monitoramento e redes para proteger o que importa</h2>
+            <p className="mt-4 text-base text-slate-600 sm:text-lg">Projetos sob medida para residências, condomínios e comércios em {COMPANY.region}.</p>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {SECURITY_FEATURES.map((f) => (
                 <li key={f} className="flex items-start gap-3 rounded-2xl border border-slate-200/90 bg-slate-50/70 p-4 shadow-sm transition-colors hover:border-brand-500/30">
@@ -201,12 +201,12 @@ export function AnchorSections() {
               ))}
             </ul>
             <a href={WHATSAPP_LINKS.security} target="_blank" rel="noopener noreferrer" id="security-cta-whatsapp" className="btn-primary mt-8 w-full px-7 py-4 sm:w-auto">
-              <WhatsAppIcon className="h-5 w-5 shrink-0" /> Orçar Câmeras e Redes
+              <WhatsAppIcon className="h-5 w-5 shrink-0" /> Orçar Câmeras e Monitoramento
             </a>
           </div>
           <ImageSlot
             src={IMAGES.cctv}
-            alt="Instalação de câmeras de segurança CFTV"
+            alt="Instalação de câmeras de segurança e monitoramento"
             label="instalacao-cftv.jpg"
             icon={<Camera className="h-7 w-7" />}
             className="aspect-[4/3] w-full rounded-3xl border border-slate-200 object-cover shadow-xl shadow-brand-500/10"

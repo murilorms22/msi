@@ -10,7 +10,7 @@ export const WHATSAPP_MESSAGES = {
   default: 'Olá, Vitor! Vim pelo site da MSI e gostaria de um orçamento.',
   remoteSupport: 'Olá, Vitor! Preciso de suporte remoto urgente no meu computador.',
   hardware: 'Olá, Vitor! Gostaria de um diagnóstico para meu notebook/computador.',
-  security: 'Olá, Vitor! Gostaria de um orçamento para câmeras/CFTV e redes.',
+  security: 'Olá, Vitor! Gostaria de um orçamento para instalação de câmeras e redes.',
   sales: 'Olá, Vitor! Gostaria de consultar equipamentos/toners disponíveis.',
 } as const
 
@@ -70,19 +70,26 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Sobre', href: '#sobre' },
 ]
 
+export type TrustItemIcon = 'wrench' | 'headphones' | 'shield'
+
+export interface TrustItem {
+  icon: TrustItemIcon
+  label: string
+}
+
 export const HERO = {
-  badge: '⚡ Atendimento Técnico Especializado em Pelotas e Região | Suporte Remoto',
+  badge: 'Atendimento de confiança em Pelotas e Suporte Remoto',
   title: 'Tecnologia, Manutenção e Segurança Completa para Seus Equipamentos e Sua Empresa.',
   highlight: 'Segurança Completa',
   subtitle:
     'Conserto e upgrade de notebooks e computadores, suporte remoto ágil via AnyDesk e instalação de sistemas de câmeras e redes. Diagnóstico transparente e sem burocracia.',
-  primaryCta: 'Solicitar Orçamento no WhatsApp',
+  primaryCta: 'Solicitar Orçamento',
   secondaryCta: 'Preciso de Suporte Remoto',
-  trustPills: [
-    { emoji: '🛠️', label: 'Diagnóstico Preciso' },
-    { emoji: '💻', label: 'Atendimento Remoto sem Sair de Casa' },
-    { emoji: '🔒', label: 'Segurança e CFTV Predial' },
-  ],
+  trustItems: [
+    { icon: 'wrench', label: 'Diagnóstico Preciso' },
+    { icon: 'headphones', label: 'Atendimento Remoto sem Sair de Casa' },
+    { icon: 'shield', label: 'Câmeras e Monitoramento' },
+  ] as TrustItem[],
 } as const
 
 export type ServiceIcon = 'laptop' | 'cpu' | 'monitor' | 'camera' | 'network' | 'shield'
@@ -134,9 +141,13 @@ export const SERVICES: Service[] = [
   {
     id: 'cftv',
     icon: 'camera',
-    title: 'Câmeras e CFTV',
-    description: 'Projeto e instalação de câmeras de segurança sob medida para cada ambiente.',
-    bullets: ['Projetos para escolas, condomínios e comércios', 'Acesso pelo celular', 'Gravação em DVR/NVR'],
+    title: 'Câmeras e Monitoramento',
+    description: 'Instalação de câmeras com visualização fácil e segura direto no seu celular.',
+    bullets: [
+      'Projetos para casas, condomínios e empresas',
+      'Acompanhe tudo pelo celular em tempo real',
+      'Gravação contínua com visão noturna',
+    ],
     topic: 'security',
     cta: 'Orçar Câmeras',
   },
@@ -167,9 +178,9 @@ export const REMOTE_SUPPORT_STEPS = [
 ] as const
 
 export const SECURITY_FEATURES = [
-  'Projetos para escolas, condomínios e comércios',
-  'Câmeras Full HD com visão noturna',
   'Monitoramento em tempo real pelo celular',
+  'Câmeras Full HD com visão noturna nítida',
+  'Projetos para residências, condomínios e comércios',
   'Instalação limpa e organizada',
 ] as const
 
