@@ -159,7 +159,7 @@ export const SERVICES: Service[] = [
     icon: 'network',
     title: 'Redes e Wi-Fi',
     description: 'Cabeamento estruturado e Wi-Fi estável para casa e empresa.',
-    bullets: ['Cabeamento e racks', 'Roteadores e repetidores', 'Cobertura sem pontos cegos'],
+    bullets: ['Cabeamento e racks', 'Roteadores e repetidores', 'Cobertura completa'],
     topic: 'security',
     cta: 'Orçar Rede',
   },
