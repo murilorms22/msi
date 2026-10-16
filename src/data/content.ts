@@ -41,10 +41,11 @@ export const ANYDESK_URL = 'https://anydesk.com'
  */
 export const IMAGE_DIR = '/images/vitor'
 export const IMAGES = {
+  logo: '/images/logo-msi.png',
   workbench: `${IMAGE_DIR}/bancada-pc.jpg`,
   remoteSupport: `${IMAGE_DIR}/suporte-anydesk.jpg`,
-  cctv: `${IMAGE_DIR}/instalacao-cftv.jpg`,
-  profile: `${IMAGE_DIR}/vitor-perfil.jpg`,
+  cctv: `${IMAGE_DIR}/instalacao-cftv.jpeg?v=2`,
+  profile: `${IMAGE_DIR}/vitor-perfil.jpeg`,
 } as const
 
 export const COMPANY = {
@@ -179,11 +180,30 @@ export const REMOTE_SUPPORT_STEPS = [
   { title: 'Problema resolvido', description: 'Você acompanha tudo na tela, com total transparência.' },
 ] as const
 
-export const SECURITY_FEATURES = [
-  'Monitoramento em tempo real pelo celular',
-  'Câmeras Full HD com visão noturna nítida',
-  'Projetos para residências, condomínios e comércios',
-  'Instalação limpa e organizada',
+export type SecurityFeatureIcon = 'smartphone' | 'camera' | 'house' | 'wrench'
+
+export interface SecurityFeature {
+  icon: SecurityFeatureIcon
+  text: string
+}
+
+export const SECURITY_FEATURES: readonly SecurityFeature[] = [
+  {
+    icon: 'smartphone',
+    text: 'Monitoramento em tempo real pelo celular',
+  },
+  {
+    icon: 'camera',
+    text: 'Câmeras Full HD com visão noturna nítida',
+  },
+  {
+    icon: 'house',
+    text: 'Projetos para residências, condomínios e comércios',
+  },
+  {
+    icon: 'wrench',
+    text: 'Instalação limpa e organizada',
+  },
 ] as const
 
 export const SALES = {

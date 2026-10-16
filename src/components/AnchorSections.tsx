@@ -1,4 +1,19 @@
-import { Camera, Check, Cpu, ExternalLink, Laptop, Monitor, Network, Printer, Shield, UserRound, type LucideIcon } from 'lucide-react'
+import {
+  Camera,
+  Check,
+  Cpu,
+  ExternalLink,
+  House,
+  Laptop,
+  Monitor,
+  Network,
+  Printer,
+  Shield,
+  Smartphone,
+  UserRound,
+  Wrench,
+  type LucideIcon,
+} from 'lucide-react'
 import {
   ABOUT,
   ANYDESK_URL,
@@ -9,6 +24,7 @@ import {
   SECURITY_FEATURES,
   SERVICES,
   WHATSAPP_LINKS,
+  type SecurityFeatureIcon,
   type ServiceIcon,
 } from '../data/content'
 import { ImageSlot } from './ImageSlot'
@@ -22,6 +38,13 @@ const ICONS: Record<ServiceIcon, LucideIcon> = {
   camera: Camera,
   network: Network,
   shield: Shield,
+}
+
+const SECURITY_ICONS: Record<SecurityFeatureIcon, LucideIcon> = {
+  smartphone: Smartphone,
+  camera: Camera,
+  house: House,
+  wrench: Wrench,
 }
 
 function SectionHeading({ eyebrow, title, subtitle, onBlue = false }: {
@@ -194,14 +217,20 @@ export function AnchorSections() {
             <h2 className="mt-3 text-2xl font-bold text-navy-950 min-[400px]:text-3xl sm:text-4xl">Câmeras, monitoramento e redes para proteger o que importa</h2>
             <p className="mt-4 text-base text-slate-600 sm:text-lg">Projetos sob medida para residências, condomínios e comércios em {COMPANY.region}.</p>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-              {SECURITY_FEATURES.map((f) => (
-                <li key={f} className="flex items-start gap-3 rounded-2xl border border-slate-200/90 bg-slate-50/70 p-4 shadow-sm transition-colors hover:border-brand-500/30">
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-brand-500/10 text-brand-600">
-                    <Shield className="h-5 w-5" />
-                  </span>
-                  <span className="text-sm font-medium text-navy-950">{f}</span>
-                </li>
-              ))}
+              {SECURITY_FEATURES.map((feature) => {
+                const Icon = SECURITY_ICONS[feature.icon]
+                return (
+                  <li
+                    key={feature.text}
+                    className="flex items-start gap-3 rounded-2xl border border-slate-200/90 bg-slate-50/70 p-4 shadow-sm transition-colors hover:border-brand-500/30"
+                  >
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-brand-500/10 text-brand-600">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <span className="text-sm font-medium text-navy-950">{feature.text}</span>
+                  </li>
+                )
+              })}
             </ul>
             <a href={WHATSAPP_LINKS.security} target="_blank" rel="noopener noreferrer" id="security-cta-whatsapp" className="btn-primary mt-8 w-full px-7 py-4 sm:w-auto">
               <WhatsAppIcon className="h-5 w-5 shrink-0" /> Orçar Câmeras e Monitoramento
@@ -210,7 +239,7 @@ export function AnchorSections() {
           <ImageSlot
             src={IMAGES.cctv}
             alt="Instalação de câmeras de segurança e monitoramento"
-            label="instalacao-cftv.jpg"
+            label="instalacao--cftv.jpg"
             icon={<Camera className="h-7 w-7" />}
             className="aspect-[4/3] w-full rounded-3xl border border-slate-200 object-cover shadow-xl shadow-brand-500/10"
           />
@@ -226,7 +255,7 @@ export function AnchorSections() {
           <ImageSlot
             src={IMAGES.profile}
             alt={`${COMPANY.technician}, técnico responsável da MSI`}
-            label="vitor-perfil.jpg"
+            label="vitor-perfil.jpeg"
             icon={<UserRound className="h-7 w-7" />}
             className="mx-auto aspect-square w-56 rounded-3xl border border-slate-200/90 object-cover shadow-xl shadow-brand-500/10 sm:w-72"
           />
@@ -251,7 +280,17 @@ export function AnchorSections() {
 
       {/* FOOTER */}
       <footer className="border-t border-navy-900 bg-navy-950 py-10 text-center text-sm text-slate-400">
-        <div className="container-page">
+        <div className="container-page flex flex-col items-center">
+          <div className="mb-4 flex items-center justify-center gap-2.5">
+            <img
+              src={IMAGES.logo}
+              alt="MSI"
+              className="h-9 w-auto object-contain drop-shadow-[0_0_12px_rgba(56,189,248,0.35)]"
+            />
+            <span className="font-display text-lg font-bold tracking-tight text-white">
+              MSI<span className="text-brand-400">.</span>
+            </span>
+          </div>
           <p className="font-display text-base font-semibold text-white">{COMPANY.fullName}</p>
           <p className="mt-1">
             Técnico responsável: <span className="text-white">{COMPANY.technician}</span> ·{' '}

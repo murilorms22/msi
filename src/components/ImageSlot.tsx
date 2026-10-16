@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { ImageIcon } from 'lucide-react'
 
 interface ImageSlotProps {
@@ -34,9 +34,23 @@ export function ImageSlot({
   const [current, setCurrent] = useState(src)
   const [failed, setFailed] = useState(false)
 
+  useEffect(() => {
+    setCurrent(src)
+    setFailed(false)
+  }, [src])
+
   const handleError = () => {
-    if (fallbackSrc && current !== fallbackSrc) setCurrent(fallbackSrc)
-    else setFailed(true)
+    const cleanUrl = current.split('?')[0]
+    const query = current.includes('?') ? '?' + current.split('?')[1] : ''
+    if (fallbackSrc && current !== fallbackSrc) {
+      setCurrent(fallbackSrc)
+    } else if (cleanUrl.endsWith('.jpg')) {
+      setCurrent(cleanUrl.replace(/\.jpg$/, '.jpeg') + query)
+    } else if (cleanUrl.endsWith('.jpeg')) {
+      setCurrent(cleanUrl.replace(/\.jpeg$/, '.jpg') + query)
+    } else {
+      setFailed(true)
+    }
   }
 
   if (failed) {

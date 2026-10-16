@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { COMPANY, NAV_LINKS, WHATSAPP_LINKS } from '../data/content'
+import { COMPANY, IMAGES, NAV_LINKS, WHATSAPP_LINKS } from '../data/content'
 import { WhatsAppIcon } from './icons/WhatsAppIcon'
 
 export function Navbar() {
@@ -37,10 +37,11 @@ export function Navbar() {
       <nav className="container-page flex h-18 items-center justify-between gap-3" aria-label="Navegação principal">
         {/* Logo */}
         <a href="#inicio" id="nav-logo" className="group flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="relative grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-navy-800 bg-navy-900 shadow-lg shadow-brand-500/15 transition-transform duration-300 group-hover:scale-105">
-            <span className="font-display text-sm font-bold tracking-wider text-gradient">MSI</span>
-            <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-brand-400 ring-2 ring-white" />
-          </span>
+          <img
+            src={IMAGES.logo}
+            alt="Logo MSI Soluções em Informática"
+            className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105 sm:h-11 drop-shadow-md"
+          />
           <span className="flex min-w-0 flex-col leading-none">
             <span className="font-display text-xl font-bold tracking-tight text-navy-950">
               MSI<span className="text-brand-500">.</span>
