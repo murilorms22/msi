@@ -141,11 +141,11 @@ export function AnchorSections() {
                   <WhatsAppIcon className="h-5 w-5 shrink-0" /> {SALES.cta}
                 </a>
               </div>
-              <ul className="flex flex-wrap gap-2.5 lg:justify-end">
+              <ul className="flex flex-wrap justify-center sm:justify-start lg:justify-end gap-2.5">
                 {SALES.items.map((item) => (
                   <li
                     key={item}
-                    className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur"
+                    className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-center text-sm font-medium text-white backdrop-blur"
                   >
                     {item}
                   </li>
@@ -222,7 +222,7 @@ export function AnchorSections() {
                 return (
                   <li
                     key={feature.text}
-                    className="flex items-start gap-3 rounded-2xl border border-slate-200/90 bg-slate-50/70 p-4 shadow-sm transition-colors hover:border-brand-500/30"
+                    className="flex items-center sm:items-start gap-3 rounded-2xl border border-slate-200/90 bg-slate-50/70 p-4 shadow-sm transition-colors hover:border-brand-500/30"
                   >
                     <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-brand-500/10 text-brand-600">
                       <Icon className="h-5 w-5" />
@@ -252,16 +252,25 @@ export function AnchorSections() {
       {/* 5. SEÇÃO SOBRE - Fundo suave / clean */}
       <section id="sobre" className="border-t border-slate-200/80 bg-slate-50/70 py-16 sm:py-20 lg:py-28">
         <div className="container-page grid items-center gap-10 lg:grid-cols-[auto_1fr] lg:gap-12">
-          <ImageSlot
-            src={IMAGES.profile}
-            alt={`${COMPANY.technician}, técnico responsável da MSI`}
-            label="vitor-perfil.jpeg"
-            icon={<UserRound className="h-7 w-7" />}
-            className="mx-auto aspect-square w-56 rounded-3xl border border-slate-200/90 object-cover shadow-xl shadow-brand-500/10 sm:w-72"
-          />
+          <div className="flex flex-col items-center">
+            <span className="mb-4 text-center text-sm font-semibold uppercase tracking-[0.18em] text-brand-600 lg:hidden">
+              Sobre
+            </span>
+            <ImageSlot
+              src={IMAGES.profile}
+              alt={`${COMPANY.technician}, técnico responsável da MSI`}
+              label="vitor-perfil.jpeg"
+              icon={<UserRound className="h-7 w-7" />}
+              className="mx-auto aspect-square w-56 rounded-3xl border border-slate-200/90 object-cover shadow-xl shadow-brand-500/10 sm:w-72"
+            />
+          </div>
           <div>
-            <span className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-600">Sobre</span>
-            <h2 className="mt-3 text-2xl font-bold text-navy-950 min-[400px]:text-3xl sm:text-4xl">{ABOUT.title}</h2>
+            <span className="hidden text-sm font-semibold uppercase tracking-[0.18em] text-brand-600 lg:inline-block">
+              Sobre
+            </span>
+            <h2 className="mt-0 text-2xl font-bold text-navy-950 min-[400px]:text-3xl sm:text-4xl lg:mt-3">
+              {ABOUT.title}
+            </h2>
             <div className="mt-5 max-w-2xl space-y-4 text-base text-slate-600 sm:text-lg">
               {ABOUT.paragraphs.map((p) => <p key={p}>{p}</p>)}
             </div>
@@ -274,6 +283,15 @@ export function AnchorSections() {
                 </div>
               ))}
             </dl>
+            <a
+              href={WHATSAPP_LINKS.default}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="about-cta-whatsapp"
+              className="btn-primary mt-8 w-full px-7 py-4 sm:w-auto"
+            >
+              <WhatsAppIcon className="h-5 w-5 shrink-0" /> Falar com o Técnico no WhatsApp
+            </a>
           </div>
         </div>
       </section>
@@ -293,7 +311,9 @@ export function AnchorSections() {
           </div>
           <p className="font-display text-base font-semibold text-white">{COMPANY.fullName}</p>
           <p className="mt-1">
-            Técnico responsável: <span className="text-white">{COMPANY.technician}</span> ·{' '}
+            Técnico responsável: <span className="text-white">{COMPANY.technician}</span>
+          </p>
+          <p className="mt-1">
             <a href={COMPANY.phoneHref} className="text-brand-400 hover:underline">{COMPANY.phoneDisplay}</a>
           </p>
           <p className="mt-4 text-xs text-slate-500">© {new Date().getFullYear()} MSI. Todos os direitos reservados.</p>

@@ -11,6 +11,13 @@ const TRUST_ICONS: Record<TrustItemIcon, typeof Wrench> = {
   school: GraduationCap,
 }
 
+const TRUST_ITEM_MOBILE_ORDER: Record<TrustItemIcon, string> = {
+  wrench: 'order-1 sm:order-none',
+  shield: 'order-2 sm:order-none',
+  headphones: 'order-3 sm:order-none',
+  school: 'order-4 sm:order-none',
+}
+
 export function HeroSection() {
   const [before, after] = HERO.title.split(HERO.highlight)
 
@@ -141,7 +148,10 @@ export function HeroSection() {
           {HERO.trustItems.map((item, idx) => {
             const Icon = TRUST_ICONS[item.icon]
             return (
-              <div key={item.label} className="flex items-center gap-4 sm:gap-6 md:gap-10">
+              <div
+                key={item.label}
+                className={`flex items-center gap-4 sm:gap-6 md:gap-10 ${TRUST_ITEM_MOBILE_ORDER[item.icon]}`}
+              >
                 <div className="flex items-center gap-3">
                   <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand-600 shadow-2xs">
                     <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
