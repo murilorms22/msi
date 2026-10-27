@@ -9,17 +9,17 @@ export default defineConfig({
     tailwindcss(),
     ViteImageOptimizer({
       png: {
-        quality: 80,
+        quality: 95,
       },
       jpeg: {
-        quality: 80,
+        quality: 90,
       },
       jpg: {
-        quality: 80,
+        quality: 90,
       },
       webp: {
         lossless: false,
-        quality: 80,
+        quality: 90,
       },
       includePublic: true,
       logStats: true,

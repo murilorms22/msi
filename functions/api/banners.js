@@ -1,7 +1,7 @@
 import { json, requireAdmin } from '../_lib/auth.js'
 
 const CONFIG_KEY = 'config'
-const MAX_FILE_BYTES = 3 * 1024 * 1024 // 3 MB por imagem
+const MAX_FILE_BYTES = 5 * 1024 * 1024 // 5 MB por imagem
 const MIN_SECONDS = 2
 const MAX_SECONDS = 60
 const DEFAULT_SECONDS = 5

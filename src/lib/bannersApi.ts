@@ -7,11 +7,11 @@ export interface BannerItem {
 /** Especificações das imagens (usadas no carrossel e exibidas no painel /admin). */
 export const BANNER_SPEC = {
   ratioLabel: '3:1',
-  width: 1800,
-  height: 600,
-  minWidth: 1500,
-  minHeight: 500,
-  maxFileMB: 3,
+  width: 2400,
+  height: 800,
+  minWidth: 1800,
+  minHeight: 600,
+  maxFileMB: 5,
   minSeconds: 2,
   maxSeconds: 60,
 } as const
@@ -60,7 +60,8 @@ export async function logout(): Promise<void> {
 
 export async function uploadBanner(file: Blob): Promise<BannerItem[]> {
   const form = new FormData()
-  form.append('file', file, 'banner.jpg')
+  const ext = file.type === 'image/webp' ? 'banner.webp' : 'banner.jpg'
+  form.append('file', file, ext)
   const data = await parse<{ items: BannerItem[] }>(
     await fetch('/api/banners', { method: 'POST', body: form }),
   )
@@ -79,33 +80,40 @@ export async function saveBanners(items: Pick<BannerItem, 'id' | 'seconds'>[]): 
 }
 
 /**
- * Prepara a imagem para o carrossel: recorta ao centro na proporção 3:1 e
- * redimensiona para 1800×600, exportando em JPEG otimizado.
+ * Prepara a imagem para o carrossel: recorta ao centro na proporção 3:1
+ * mantendo alta resolução (até 2880×960) e qualidade visual máxima (0.92).
  */
 export async function prepareBannerImage(file: File): Promise<{ blob: Blob; wasCropped: boolean; srcW: number; srcH: number }> {
   const bitmap = await createImageBitmap(file)
   const { width: srcW, height: srcH } = bitmap
-  const target = BANNER_SPEC.width / BANNER_SPEC.height
+  const targetRatio = 3
   const ratio = srcW / srcH
-  const wasCropped = Math.abs(ratio - target) / target > 0.02
+  const wasCropped = Math.abs(ratio - targetRatio) / targetRatio > 0.02
 
   let sw = srcW
   let sh = srcH
-  if (ratio > target) sw = Math.round(srcH * target)
-  else if (ratio < target) sh = Math.round(srcW / target)
+  if (ratio > targetRatio) sw = Math.round(srcH * targetRatio)
+  else if (ratio < targetRatio) sh = Math.round(srcW / targetRatio)
   const sx = Math.round((srcW - sw) / 2)
   const sy = Math.round((srcH - sh) / 2)
 
+  // Preserva resolução nativa alta se a imagem original tiver boa qualidade (até 2880px)
+  const outW = Math.min(Math.max(sw, BANNER_SPEC.width), 2880)
+  const outH = Math.round(outW / targetRatio)
+
   const canvas = document.createElement('canvas')
-  canvas.width = BANNER_SPEC.width
-  canvas.height = BANNER_SPEC.height
+  canvas.width = outW
+  canvas.height = outH
   const ctx = canvas.getContext('2d')!
+  ctx.imageSmoothingEnabled = true
   ctx.imageSmoothingQuality = 'high'
   ctx.drawImage(bitmap, sx, sy, sw, sh, 0, 0, canvas.width, canvas.height)
   bitmap.close()
 
+  // Exporta em alta qualidade (0.92) evitando artefatos de compressão
+  const format = file.type === 'image/png' || file.type === 'image/webp' ? 'image/webp' : 'image/jpeg'
   const blob = await new Promise<Blob>((resolve, reject) =>
-    canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('Falha ao processar a imagem.'))), 'image/jpeg', 0.85),
+    canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('Falha ao processar a imagem.'))), format, 0.92),
   )
   return { blob, wasCropped, srcW, srcH }
 }

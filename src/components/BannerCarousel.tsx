@@ -52,8 +52,8 @@ export function BannerCarousel() {
             key={b.id}
             src={b.url}
             alt={`Banner ${i + 1} de ${count}`}
-            width={1800}
-            height={600}
+            width={2400}
+            height={800}
             loading={i === 0 ? 'eager' : 'lazy'}
             decoding="async"
             aria-hidden={i !== index}
