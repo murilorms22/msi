@@ -22,7 +22,7 @@ export function HeroSection() {
   const [before, after] = HERO.title.split(HERO.highlight)
 
   return (
-    <section id="inicio" className="relative pb-14 pt-28 sm:pt-36 lg:pb-20 lg:pt-38">
+    <section id="inicio" className="relative pb-14 pt-16 sm:pt-20 lg:pb-20 lg:pt-24">
       {/* Fundo decorativo sutil com grid em azul claro */}
       <div className="bg-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black_40%,transparent_80%)]" />
       <div className="pointer-events-none absolute -top-40 right-0 h-[24rem] w-[24rem] rounded-full bg-brand-500/15 blur-3xl sm:h-[32rem] sm:w-[32rem]" />
@@ -32,14 +32,7 @@ export function HeroSection() {
       <div className="container-page relative grid items-center gap-10 lg:grid-cols-[1.25fr_0.85fr] lg:gap-12">
         {/* Coluna de Texto e Ações */}
         <div className="animate-fade-up min-w-0">
-          <span
-            id="hero-badge"
-            className="inline-flex items-center border-l-2 border-brand-500 pl-3 text-xs font-semibold tracking-wide text-brand-600 sm:text-sm"
-          >
-            {HERO.badge}
-          </span>
-
-          <h1 className="mt-5 text-[1.95rem] font-medium leading-[1.14] text-navy-950 min-[400px]:text-4xl sm:text-5xl lg:text-[3.25rem] lg:leading-[1.1]">
+          <h1 className="text-[1.95rem] font-medium leading-[1.14] text-navy-950 min-[400px]:text-4xl sm:text-5xl lg:text-[3.25rem] lg:leading-[1.1]">
             {before}
             <span className="text-gradient font-bold">{HERO.highlight}</span>
             {after}

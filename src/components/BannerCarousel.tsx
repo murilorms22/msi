@@ -31,11 +31,12 @@ export function BannerCarousel() {
   if (!count) return null
 
   return (
-    <section
-      id="banners"
-      aria-roledescription="carrossel"
-      aria-label="Destaques"
-      className="relative w-full bg-navy-950"
+    <div className="pt-18 bg-white">
+      <section
+        id="banners"
+        aria-roledescription="carrossel"
+        aria-label="Destaques"
+        className="relative w-full bg-navy-950"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
@@ -101,5 +102,6 @@ export function BannerCarousel() {
         )}
       </div>
     </section>
+  </div>
   )
 }

@@ -27,7 +27,6 @@ import {
   type SecurityFeatureIcon,
   type ServiceIcon,
 } from '../data/content'
-import { BannerCarousel } from './BannerCarousel'
 import { ImageSlot } from './ImageSlot'
 import { SchoolSection } from './SchoolSection'
 import { WhatsAppIcon } from './icons/WhatsAppIcon'
@@ -75,9 +74,6 @@ function SectionHeading({ eyebrow, title, subtitle, onBlue = false }: {
 export function AnchorSections() {
   return (
     <>
-      {/* 0. CARROSSEL DE BANNERS (3:1) - gerenciado em /admin */}
-      <BannerCarousel />
-
       {/* 1. SEÇÃO DE SERVIÇOS - Fundo limpo predominante */}
       <section id="servicos" className="border-t border-slate-100 bg-slate-50/50 py-16 sm:py-20 lg:py-28">
         <div className="container-page">
